@@ -1,6 +1,6 @@
 ---
 - name: ONTAP Info
-  hosts: localhost
+  hosts: Ansible
   collections: netapp.ontap
   gather_facts: no
   become: no
