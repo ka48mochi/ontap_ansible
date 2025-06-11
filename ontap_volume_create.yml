@@ -1,8 +1,10 @@
 ---
 - name: Create volume on ONTAP SVM
-  hosts: localhost
-  connection: netapp.ontap
-  gather_facts: false
+  collections: netapp.ontap
+  gather_facts: no
+  become: no
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
 
   tasks:
   - name: Create volume
