@@ -10,6 +10,7 @@
   - name: Create volume
     na_ontap_volume:
       state: present
+      state: present
       hostname: "{{ svm_host }}"
       username: "{{ svm_user }}"
       password: "{{ svm_password }}"
