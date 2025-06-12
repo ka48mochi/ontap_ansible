@@ -1,0 +1,26 @@
+---
+- name: Create volume on ONTAP SVM
+  hosts: localhost
+  collections: netapp.ontap
+  gather_facts: no
+  become: no
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  tasks:
+  - name: Create volume
+    na_ontap_volume:
+      state: present
+      hostname: "{{ svm_host }}"
+      username: "{{ svm_user }}"
+      password: "{{ svm_password }}"
+      vserver: "{{ vserver }}"
+      size: "{{ size }}"
+      size_unit: "{{ size_unit }}"
+      aggregate_name: "{{ aggregate_name }}"
+      name: "{{ volume_name }}"
+      junction_path: "{{ junction_path }}"
+      export_policy: "{{ export_policy }}"
+      validate_certs: false
+      use_rest: always
+      https: true
