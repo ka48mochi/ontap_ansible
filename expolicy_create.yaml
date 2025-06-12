@@ -1,0 +1,28 @@
+- name: SVM　NFS Export Policy Rule Crate
+  hosts: localhost
+  collections: netapp.ontap
+  gather_facts: no
+  become: no
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+  tasks:
+  - name: Create ExportPolicyRule
+    netapp.ontap.na_ontap_export_policy_rule:
+      state: present
+      hostname: "{{ svm_host }}"
+      username: "{{ svm_user }}"
+      password: "{{ svm_password }}"
+      vserver: "{{ vserver }}"
+      name: "{{ policyname }}"
+      rule_index: "{{ index }}"
+      client_match: "{{ clmatch }}"
+      ro_rule: "{{ rorule }}"
+      rw_rule: "{{ rwrule }}"
+      protocol: "{{ proto }}"
+      super_user_security: "{{ superuser }}"
+      anonymous_user_id: "{{ anon }}"
+      allow_suid: "{{ suid }}"
+      validate_certs: false
+      use_rest: always
+      https: true
